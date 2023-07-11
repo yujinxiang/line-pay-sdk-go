@@ -10,8 +10,8 @@ import (
 // confirmUrlまたはCheck Payment Status APIによってユーザーが決済要求を承認した後、加盟店側で決済を完了させるためのAPIです。
 // Request APIの"options.payment.capture"をfalseに設定するとオーソリと売上確定が分離された決済になり、決済を完了させても決済ステータスは売上確定待ち(オーソリ)状態のままとなります。
 // 売上を確定するには、Capture APIを呼び出して売上確定を行う必要があります。
-func (c *Client) Confirm(ctx context.Context, transactionID int64, req *ConfirmRequest) (*ConfirmResponse, *http.Response, error) {
-	path := fmt.Sprintf("/v3/payments/%d/confirm", transactionID)
+func (c *Client) Confirm(ctx context.Context, transactionID string, req *ConfirmRequest) (*ConfirmResponse, *http.Response, error) {
+	path := fmt.Sprintf("/v3/payments/%s/confirm", transactionID)
 	httpReq, err := c.NewRequest(http.MethodPost, path, req)
 	if err != nil {
 		return nil, nil, err
