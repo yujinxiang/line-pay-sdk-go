@@ -1,4 +1,4 @@
-module github.com/gotokatsuya/line-pay-sdk-go
+module github.com/yujinxiang/line-pay-sdk-go
 
 go 1.14
 
