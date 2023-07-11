@@ -14,6 +14,7 @@ func (c *Client) Request(ctx context.Context, req *RequestRequest) (*RequestResp
 	if err != nil {
 		return nil, nil, err
 	}
+	httpReq.Close = true
 	resp := new(RequestResponse)
 	httpResp, err := c.Do(ctx, httpReq, resp)
 	if err != nil {
